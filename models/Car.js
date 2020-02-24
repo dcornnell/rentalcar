@@ -26,12 +26,12 @@ module.exports = function(sequelize, dataTypes) {
       type: dataTypes.FLOAT(5, 2)
     },
     start_date: {
-      type: dataTypes.DATE
-      //allowNull: false
+      type: dataTypes.DATE,
+      allowNull: false
     },
     end_date: {
-      type: dataTypes.DATE
-      //allowNull: false
+      type: dataTypes.DATE,
+      allowNull: false
     },
     rented: {
       type: dataTypes.BOOLEAN,
