@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import axios from "axios";
 
 class App extends Component {
   state = { cars: [] };
+  getCars() {
+    axios.get("/api/cars").then(res => {
+      const cars = res.data;
+      this.setState({ cars: cars });
+    });
+  }
+
   componentDidMount() {
-    fetch("/api/cars")
-      .then(res => res.json())
-      .then(cars => this.setState({ cars }));
+    this.getCars();
   }
   render() {
     return (
