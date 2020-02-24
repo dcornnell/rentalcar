@@ -3,7 +3,7 @@
 const express = require("express");
 
 //establish our PORT and create the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 //
 const db = require("./models");
