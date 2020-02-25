@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import axios from "axios";
+import m from "moment";
 
-class NewCar extends Component {
+class EditCar extends Component {
   state = {
-    make: "",
-    model: "",
-    year: "",
-    seats: "",
-    price: "",
-    start_date: "",
-    end_date: "",
-    rented: false,
-    isLoading: false
+    make: this.props.about.make,
+    model: this.props.about.model,
+    year: this.props.about.year,
+    seats: this.props.about.seats,
+    price: this.props.about.price,
+    start_date: this.props.about.start_date,
+    end_date: this.props.about.end_date,
+    rented: this.props.about.rented
   };
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -20,34 +19,9 @@ class NewCar extends Component {
     });
   };
 
-  handleFormSubmit = event => {
+  onSubmit = event => {
     event.preventDefault();
-    this.setState({ isLoading: true });
-    axios
-      .post("/api/cars", {
-        make: this.state.make,
-        model: this.state.model,
-        year: this.state.year,
-        seats: this.state.seats,
-        price: this.state.price,
-        start_date: this.state.start_date,
-        end_date: this.state.end_date
-      })
-      .then(response => {
-        this.setState(
-          {
-            make: "",
-            model: "",
-            year: "",
-            seats: "",
-            price: "",
-            start_date: "",
-            end_date: ""
-          },
-          this.props.update
-        );
-      })
-      .catch(function(error) {});
+    this.props.onSubmit(this.state);
   };
 
   render() {
@@ -105,7 +79,6 @@ class NewCar extends Component {
                 type="input"
                 className="form-control"
                 id="seats"
-                placeholder="seats"
                 name="seats"
                 value={this.state.seats}
                 onChange={this.handleInputChange}
@@ -116,10 +89,10 @@ class NewCar extends Component {
             <div className="form-group">
               <label for="price">price per day</label>
               <input
+                step="0.01"
                 type="number"
                 className="form-control"
                 id="price"
-                placeholder="00.00"
                 name="price"
                 value={this.state.price}
                 onChange={this.handleInputChange}
@@ -134,7 +107,7 @@ class NewCar extends Component {
                 className="form-control"
                 id="start-date"
                 name="start_date"
-                value={this.state.start_date}
+                value={m(this.state.start_date).format("YYYY-MM-DD")}
                 onChange={this.handleInputChange}
               />
             </div>
@@ -147,7 +120,7 @@ class NewCar extends Component {
                 className="form-control"
                 id="end-date"
                 name="end_date"
-                value={this.state.end_date}
+                value={m(this.state.end_date).format("YYYY-MM-DD")}
                 onChange={this.handleInputChange}
               />
             </div>
@@ -158,7 +131,9 @@ class NewCar extends Component {
             <button
               type="submit"
               class="btn btn-primary"
-              onClick={this.handleFormSubmit}
+              onClick={event => {
+                this.onSubmit(event);
+              }}
             >
               Submit
             </button>
@@ -169,4 +144,4 @@ class NewCar extends Component {
   }
 }
 
-export default NewCar;
+export default EditCar;
