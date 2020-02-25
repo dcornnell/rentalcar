@@ -23,7 +23,6 @@ class App extends Component {
   render() {
     const { cars } = this.state;
     return (
-      <h2>Add New Car</h2>
       <div>
         <table className="table">
           <thread className="align">
