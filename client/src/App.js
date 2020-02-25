@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import axios from "axios";
 
@@ -16,23 +16,40 @@ class App extends Component {
     this.getCars();
   }
   render() {
+    const { cars } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <table className="table">
+        <thread className="align">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">Year</th>
+            <th scope="col">Seats</th>
+            <th scope="col">Price per day</th>
+            <th scope="col">Day Rented</th>
+            <th scope="col">Day Returned</th>
+            <th scope="col">Rented</th>
+          </tr>
+        </thread>
+        <tbody>
+          {cars.map(car => {
+            return (
+              <tr>
+                <th scope="row">{car.id}</th>
+                <td>{car.car_maker}</td>
+                <td>{car.car_model}</td>
+                <td>{car.year}</td>
+                <td>{car.seats}</td>
+                <td>{car.price}</td>
+                <td>{car.start_date}</td>
+                <td>{car.end_date}</td>
+                <td>{car.rented ? "rented" : "available"}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     );
   }
 }
