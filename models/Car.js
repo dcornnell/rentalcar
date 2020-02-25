@@ -6,11 +6,11 @@ module.exports = function(sequelize, dataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    car_maker: {
+    make: {
       type: dataTypes.STRING,
       allowNull: false
     },
-    car_model: {
+    model: {
       type: dataTypes.STRING,
       allowNull: false
     },
