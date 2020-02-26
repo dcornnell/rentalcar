@@ -23,6 +23,7 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
+      order: [["id", "DESC"]],
       returning: true,
       plain: true
     }).then(
