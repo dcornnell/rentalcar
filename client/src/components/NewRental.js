@@ -82,7 +82,7 @@ class NewRental extends Component {
     return (
       <form>
         <div className="row">
-          <div className="col">
+          <div className="column">
             <div className="form-group">
               <label for="Rented Date">Rented Date</label>
               <input

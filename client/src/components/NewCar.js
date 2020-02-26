@@ -53,7 +53,7 @@ class NewCar extends Component {
     return (
       <form>
         <div className="row">
-          <div className="col">
+          <div className="col-sm-12 col-md-4">
             <div className="form-group">
               <label for="Make">Make</label>
               <input
@@ -67,7 +67,7 @@ class NewCar extends Component {
               />
             </div>
           </div>
-          <div className="col">
+          <div className="col-sm-12 col-md-4">
             <div class="form-group">
               <label for="Model">Model</label>
               <input
@@ -81,7 +81,7 @@ class NewCar extends Component {
               />
             </div>
           </div>
-          <div className="col">
+          <div className="col-sm-12 col-md-4">
             <div class="form-group">
               <label for="year">Year</label>
               <input
@@ -97,9 +97,9 @@ class NewCar extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col-sm-12 col-md-3">
             <div className="form-group">
-              <label for="seats">seats</label>
+              <label for="seats">Seats</label>
               <input
                 type="input"
                 className="form-control"
@@ -111,7 +111,7 @@ class NewCar extends Component {
               />
             </div>
           </div>
-          <div className="col">
+          <div className="col-sm-12 col-md-3">
             <div className="form-group">
               <label for="price">price per day</label>
               <input
@@ -125,7 +125,7 @@ class NewCar extends Component {
               />
             </div>
           </div>
-          <div className="col">
+          <div className="col-sm-12 col-md-3">
             <div className="form-group">
               <label for="starting-date">starting date</label>
               <input
@@ -138,7 +138,7 @@ class NewCar extends Component {
               />
             </div>
           </div>
-          <div className="col">
+          <div className="col-sm-12 col-md-3">
             <div className="form-group">
               <label for="end-date">end date</label>
               <input
