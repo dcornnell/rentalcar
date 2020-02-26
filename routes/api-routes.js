@@ -10,7 +10,8 @@ module.exports = function(app) {
     db.Car.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.Rental]
     }).then(function(result) {
       res.json(result);
     });
@@ -37,6 +38,12 @@ module.exports = function(app) {
 
   app.post("/api/cars", function(req, res) {
     db.Car.create(req.body).then(function(results) {
+      res.json(results);
+    });
+  });
+
+  app.post("/api/rentals", function(req, res) {
+    db.Rental.create(req.body).then(function(results) {
       res.json(results);
     });
   });

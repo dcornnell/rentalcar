@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import EditCar from "../components/EditCar";
+import RentalList from "../components/RentalList";
+import NewRental from "../components/NewRental";
 
 class Car extends Component {
   state = {
@@ -29,6 +31,7 @@ class Car extends Component {
     this.getInfo();
   }
   render() {
+    console.log(this.state.about.price);
     return this.state.about ? (
       <div>
         <h1>
@@ -38,12 +41,25 @@ class Car extends Component {
         <button className="button" onClick={this.toggleEdit}>
           Edit
         </button>
+
         {this.state.edit === true ? (
           <EditCar
             onSubmit={childState => {
               this.FormSubmit(childState);
             }}
             about={this.state.about}
+          />
+        ) : (
+          ""
+        )}
+        <RentalList rentals={this.state.about.Rentals} />
+        {this.state.about.price !== undefined ? (
+          <NewRental
+            price={this.state.about.price}
+            carId={this.props.match.params.id}
+            update={() => {
+              this.getInfo();
+            }}
           />
         ) : (
           ""
