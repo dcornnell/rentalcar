@@ -1,7 +1,7 @@
 const db = require("../models");
 module.exports = function(app) {
   app.get("/api/cars", function(req, res) {
-    db.Car.findAll().then(function(results) {
+    db.Car.findAll({ order: [["createdAt", "DESC"]] }).then(function(results) {
       res.json(results);
     });
   });
@@ -23,7 +23,7 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      order: [["id", "DESC"]],
+
       returning: true,
       plain: true
     }).then(
