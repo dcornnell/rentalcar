@@ -7,7 +7,8 @@ import NewRental from "../components/NewRental";
 class Car extends Component {
   state = {
     about: {},
-    edit: false
+    editCar: false,
+    addRental: false
   };
   getInfo() {
     const id = this.props.match.params.id;
@@ -17,53 +18,90 @@ class Car extends Component {
     });
   }
 
-  toggleEdit = event => {
-    event.preventDefault();
-    this.setState({ edit: !this.state.edit });
+  toggle = property => {
+    if (property === "editCar") {
+      this.setState({ editCar: !this.state.editCar });
+    } else if (property === "addRental") {
+      this.setState({ addRental: !this.state.addRental });
+    } else {
+    }
   };
 
   FormSubmit(childState) {
-    console.log(childState);
     const id = this.props.match.params.id;
-    axios.put("/api/cars/" + id, { data: childState }).then(this.getInfo());
+    axios.put("/api/cars/" + id, { data: childState }).then(() => {
+      this.getInfo();
+      this.setState({ editCar: !this.state.editCar });
+    });
   }
   componentDidMount() {
     this.getInfo();
   }
   render() {
-    console.log(this.state.about.price);
     return this.state.about ? (
-      <div>
-        <h1>
-          make: {this.state.about.make}, model: {this.state.about.model}, year:
-          {this.state.about.year}, seats: {this.state.about.seats}
-        </h1>
-        <button className="button" onClick={this.toggleEdit}>
-          Edit
+      <div className="container">
+        <div className="jumbotron">
+          <h1>
+            {this.state.about.make} {this.state.about.model}{" "}
+          </h1>
+          <div className="row pty-1">
+            <div className="col">
+              <h4>year: {this.state.about.year}</h4>
+            </div>
+            <div className="col">
+              <h4>seats: {this.state.about.seats}</h4>
+            </div>
+            <div className="col">
+              <h4>price pre day: {this.state.about.price}</h4>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <button
+            className="btn primary"
+            onClick={() => {
+              this.toggle("editCar");
+            }}
+          >
+            Edit Car
+          </button>
+
+          {this.state.editCar === true ? (
+            <EditCar
+              onSubmit={childState => {
+                this.FormSubmit(childState);
+              }}
+              about={this.state.about}
+            />
+          ) : (
+            ""
+          )}
+        </div>
+
+        <h2>Rental History</h2>
+        <button
+          className="btn align-right"
+          onClick={() => this.toggle("addRental")}
+        >
+          {this.state.addRental === true ? "hide form" : "add rental"}
         </button>
 
-        {this.state.edit === true ? (
-          <EditCar
-            onSubmit={childState => {
-              this.FormSubmit(childState);
-            }}
-            about={this.state.about}
-          />
+        {this.state.about.price !== undefined &&
+        this.state.addRental === true ? (
+          <div class="card">
+            <div class="card-body">
+              <NewRental
+                price={this.state.about.price}
+                carId={this.props.match.params.id}
+                update={() => {
+                  this.getInfo();
+                }}
+              />
+            </div>
+          </div>
         ) : (
           ""
         )}
         <RentalList rentals={this.state.about.Rentals} />
-        {this.state.about.price !== undefined ? (
-          <NewRental
-            price={this.state.about.price}
-            carId={this.props.match.params.id}
-            update={() => {
-              this.getInfo();
-            }}
-          />
-        ) : (
-          ""
-        )}
       </div>
     ) : (
       <div>info not found</div>

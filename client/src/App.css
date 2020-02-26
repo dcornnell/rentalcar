@@ -1,5 +1,10 @@
 body {
   font-family: "Open Sans", sans-serif;
+  color: #2d2a26;
+  padding-top: 70px;
+}
+.navbar-light .navbar-brand {
+  color: #ce0e2d;
 }
 
 thead {
@@ -8,4 +13,12 @@ thead {
 
 .align {
   display: table-header-group;
+}
+
+.is-active {
+  display: none;
+}
+
+.edit-button {
+  position: absolute;
 }
