@@ -20,7 +20,7 @@ module.exports = function(sequelize, dataTypes) {
       type: dataTypes.FLOAT(10, 2)
     },
     vat_price: {
-      type: dataTypes.FLOAT(5, 2)
+      type: dataTypes.FLOAT(10, 2)
     },
     start_date: {
       type: dataTypes.DATE,

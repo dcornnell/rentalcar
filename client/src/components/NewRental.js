@@ -49,6 +49,7 @@ class NewRental extends Component {
           },
           this.props.update
         );
+        this.props.update();
       })
       .catch(function(error) {});
   };

@@ -57,6 +57,9 @@ class Car extends Component {
           <NewRental
             price={this.state.about.price}
             carId={this.props.match.params.id}
+            update={() => {
+              this.getInfo();
+            }}
           />
         ) : (
           ""
