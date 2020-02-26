@@ -10,8 +10,7 @@ class NewCar extends Component {
     price: "",
     start_date: "",
     end_date: "",
-    rented: false,
-    isLoading: false
+    rented: false
   };
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -22,7 +21,7 @@ class NewCar extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.setState({ isLoading: true });
+
     axios
       .post("/api/cars", {
         make: this.state.make,

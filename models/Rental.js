@@ -1,28 +1,25 @@
 module.exports = function(sequelize, dataTypes) {
-  const Car = sequelize.define("Car", {
+  const Rental = sequelize.define("Rental", {
     id: {
       type: dataTypes.INTEGER,
-
       primaryKey: true,
       autoIncrement: true
     },
-    make: {
-      type: dataTypes.STRING,
+    miles: {
+      type: dataTypes.INTEGER(10),
       allowNull: false
     },
-    model: {
-      type: dataTypes.STRING,
-      allowNull: false
-    },
-    year: {
-      type: dataTypes.INTEGER(4),
-      allowNull: false
-    },
-    seats: {
+    days: {
       type: dataTypes.INTEGER,
       allowNull: false
     },
     price: {
+      type: dataTypes.FLOAT(10, 2)
+    },
+    total_price: {
+      type: dataTypes.FLOAT(10, 2)
+    },
+    vat_price: {
       type: dataTypes.FLOAT(5, 2)
     },
     start_date: {
@@ -32,18 +29,16 @@ module.exports = function(sequelize, dataTypes) {
     end_date: {
       type: dataTypes.DATE,
       allowNull: false
-    },
-    rented: {
-      type: dataTypes.BOOLEAN,
-      defaultValue: false
     }
   });
 
-  Car.associate = function(models) {
-    Car.hasMany(models.Rental, {
-      onDelete: "cascade"
+  Rental.associate = function(models) {
+    Rental.belongsTo(models.Car, {
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
 
-  return Car;
+  return Rental;
 };
