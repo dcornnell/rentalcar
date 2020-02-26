@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 class Home extends Component {
   state = { cars: [], modal: false };
   getCars = () => {
+    console.log("hello");
     axios.get("/api/cars").then(res => {
       const cars = res.data;
       this.setState({ cars: cars });
@@ -15,6 +16,18 @@ class Home extends Component {
 
   componentDidMount() {
     this.getCars();
+  }
+
+  rentCar(id) {
+    const index = this.state.cars.findIndex(car => car.id === id);
+    console.log(this.state.cars[index].rented);
+    axios
+      .put("/api/cars/" + id, {
+        data: { rented: !this.state.cars[index].rented }
+      })
+      .then(res => {
+        this.getCars();
+      });
   }
 
   render() {
@@ -38,8 +51,9 @@ class Home extends Component {
           </thread>
           <tbody>
             {cars.map(car => {
+              const style = car.rented === true ? "table-danger" : "";
               return (
-                <tr>
+                <tr className={style}>
                   <th scope="row">{car.id}</th>
                   <td>{car.make}</td>
                   <td>{car.model}</td>
@@ -48,14 +62,30 @@ class Home extends Component {
                   <td>{car.price}</td>
                   <td>{m(car.start_date).format("MM/DD/YYYY")}</td>
                   <td>{m(car.end_date).format("MM/DD/YYYY")}</td>
-                  <td>{car.rented ? "rented" : "available"}</td>
+                  <td>
+                    {car.rented === true ? (
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => {
+                          this.rentCar(car.id);
+                        }}
+                      >
+                        yes
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-primary btn-sm"
+                        onClick={() => {
+                          this.rentCar(car.id);
+                        }}
+                      >
+                        no
+                      </button>
+                    )}
+                  </td>
                   <td>
                     <Link to={"/api/cars/" + car.id}>
-                      <button
-                        type="submit"
-                        class="btn btn-warning  btn-sm"
-                        onClick={console.log("hello")}
-                      >
+                      <button type="submit" class="btn btn-warning  btn-sm">
                         View Car
                       </button>
                     </Link>
