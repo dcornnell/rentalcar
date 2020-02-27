@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NumberFormat from "react-number-format";
+import validation from "../utils/Validation";
 class NewRental extends Component {
   state = {
     CarId: this.props.carId,
@@ -139,13 +140,13 @@ class NewRental extends Component {
 
         <div className="row">
           <table className="table">
-            <thread className="align">
+            <thead className="align">
               <tr>
                 <th scope="col">Price Per Day</th>
                 <th scope="col">Total Price</th>
                 <th scope="col">Vat Price</th>
               </tr>
-            </thread>
+            </thead>
             <tbody>
               <tr>
                 <td>{this.props.price}</td>
@@ -193,6 +194,11 @@ class NewRental extends Component {
             >
               Submit
             </button>
+          </div>
+        </div>
+        <div className="row validation">
+          <div className="col text-right">
+            {validation.dateCheck(this.state.start_date, this.state.end_date)}
           </div>
         </div>
       </form>

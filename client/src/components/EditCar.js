@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import m from "moment";
-
+import validation from "../utils/Validation";
 class EditCar extends Component {
   state = {
     make: this.props.about.make,
@@ -137,6 +137,11 @@ class EditCar extends Component {
             >
               Submit
             </button>
+          </div>
+        </div>
+        <div className="row validation">
+          <div className="col text-right">
+            {validation.dateCheck(this.state.start_date, this.state.end_date)}
           </div>
         </div>
       </form>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import validation from "../utils/Validation";
 
 class NewCar extends Component {
   state = {
@@ -85,7 +86,7 @@ class NewCar extends Component {
             <div class="form-group">
               <label for="year">Year</label>
               <input
-                type="input"
+                type="number"
                 className="form-control"
                 id="year"
                 placeholder="year"
@@ -101,7 +102,7 @@ class NewCar extends Component {
             <div className="form-group">
               <label for="seats">Seats</label>
               <input
-                type="input"
+                type="number"
                 className="form-control"
                 id="seats"
                 placeholder="seats"
@@ -161,6 +162,11 @@ class NewCar extends Component {
             >
               Submit
             </button>
+          </div>
+        </div>
+        <div className="row validation">
+          <div className="col text-right">
+            {validation.dateCheck(this.state.start_date, this.state.end_date)}
           </div>
         </div>
       </form>
