@@ -26,7 +26,7 @@ class CarList extends Component {
             {this.props.cars.map(car => {
               const style = car.rented === true ? "table-danger" : "";
               return (
-                <tr className={style} key={car}>
+                <tr className={style} key={car.id}>
                   <td>{car.id}</td>
                   <td>{car.make}</td>
                   <td>{car.model}</td>

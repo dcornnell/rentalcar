@@ -21,6 +21,7 @@ class EditCar extends Component {
 
   onSubmit = event => {
     event.preventDefault();
+
     this.props.onSubmit(this.state);
   };
 
@@ -141,7 +142,12 @@ class EditCar extends Component {
         </div>
         <div className="row validation">
           <div className="col text-right">
-            {validation.dateCheck(this.state.start_date, this.state.end_date)}
+            {validation.dateCheck(
+              this.state.start_date,
+              this.state.end_date
+            ) === true
+              ? ""
+              : "your end date is outside your start date"}
           </div>
         </div>
       </form>

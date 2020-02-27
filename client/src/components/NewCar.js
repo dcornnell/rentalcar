@@ -22,32 +22,33 @@ class NewCar extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-
-    axios
-      .post("/api/cars", {
-        make: this.state.make,
-        model: this.state.model,
-        year: this.state.year,
-        seats: this.state.seats,
-        price: this.state.price,
-        start_date: this.state.start_date,
-        end_date: this.state.end_date
-      })
-      .then(response => {
-        this.setState(
-          {
-            make: "",
-            model: "",
-            year: "",
-            seats: "",
-            price: "",
-            start_date: "",
-            end_date: ""
-          },
-          this.props.update
-        );
-      })
-      .catch(function(error) {});
+    if (validation.checkForNull(this.state) === true) {
+      axios
+        .post("/api/cars", {
+          make: this.state.make,
+          model: this.state.model,
+          year: this.state.year,
+          seats: this.state.seats,
+          price: this.state.price,
+          start_date: this.state.start_date,
+          end_date: this.state.end_date
+        })
+        .then(response => {
+          this.setState(
+            {
+              make: "",
+              model: "",
+              year: "",
+              seats: "",
+              price: "",
+              start_date: "",
+              end_date: ""
+            },
+            this.props.update
+          );
+        })
+        .catch(function(error) {});
+    }
   };
 
   render() {
@@ -166,7 +167,15 @@ class NewCar extends Component {
         </div>
         <div className="row validation">
           <div className="col text-right">
-            {validation.dateCheck(this.state.start_date, this.state.end_date)}
+            {validation.dateCheck(
+              this.state.start_date,
+              this.state.end_date
+            ) === true
+              ? ""
+              : "your end date is outside your start date, "}
+            {validation.checkForNull(this.state) === true
+              ? " "
+              : "please fill out all fields"}
           </div>
         </div>
       </form>
