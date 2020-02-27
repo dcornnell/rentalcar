@@ -8,7 +8,7 @@ class CarList extends Component {
     return (
       <div className="table-responsive">
         <table className="table">
-          <thread className="align">
+          <thead>
             <tr>
               <th>#</th>
               <th>Make</th>
@@ -21,12 +21,12 @@ class CarList extends Component {
               <th>Available</th>
               <th>Details</th>
             </tr>
-          </thread>
+          </thead>
           <tbody>
             {this.props.cars.map(car => {
               const style = car.rented === true ? "table-danger" : "";
               return (
-                <tr className={style}>
+                <tr className={style} key={car}>
                   <td>{car.id}</td>
                   <td>{car.make}</td>
                   <td>{car.model}</td>
@@ -67,8 +67,8 @@ class CarList extends Component {
                   </td>
                   <td>
                     <Link to={"/api/cars/" + car.id}>
-                      <button type="submit" class="btn btn-warning  btn-sm">
-                        View Car
+                      <button type="submit" className="btn btn-warning  btn-sm">
+                        View
                       </button>
                     </Link>
                   </td>
