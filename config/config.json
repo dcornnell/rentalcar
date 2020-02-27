@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "feb31986",
-    "database": "rentalcar",
-    "host": "127.0.0.1",
+    "username": "xtujx1n296dt03mz",
+    "password": "atvucxan4v90y3o8",
+    "database": "pc8lqqbppyo4mhjk",
+    "host": "kil9uzd3tgem3naa.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases": false
   },

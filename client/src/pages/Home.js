@@ -3,7 +3,6 @@ import NewCar from "../components/NewCar";
 import axios from "axios";
 
 import CarList from "../components/CarList";
-
 class Home extends Component {
   state = { cars: [], form: false };
   getCars = () => {
@@ -35,6 +34,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.state.cars);
     return (
       <div className="container">
         <div className="column">
