@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import NewCar from "../components/NewCar";
 import axios from "axios";
-import m from "moment";
-import { Link } from "react-router-dom";
-import NumberFormat from "react-number-format";
+
+import CarList from "../components/CarList";
 
 class Home extends Component {
   state = { cars: [], form: false };
   getCars = () => {
-    console.log("hello");
     axios.get("/api/cars").then(res => {
       const cars = res.data;
       this.setState({ cars: cars });
@@ -26,7 +24,7 @@ class Home extends Component {
 
   rentCar(id) {
     const index = this.state.cars.findIndex(car => car.id === id);
-    console.log(this.state.cars[index].rented);
+
     axios
       .put("/api/cars/" + id, {
         data: { rented: !this.state.cars[index].rented }
@@ -37,7 +35,6 @@ class Home extends Component {
   }
 
   render() {
-    const { cars } = this.state;
     return (
       <div className="container">
         <div className="column">
@@ -58,83 +55,10 @@ class Home extends Component {
             ""
           )}
 
-          <div className="row">
-            <div className="table-responsive">
-              <table className="table">
-                <thread className="align">
-                  <tr>
-                    <th>#</th>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Year</th>
-                    <th>Seats</th>
-                    <th>Price per day</th>
-                    <th>Day Rented</th>
-                    <th>Day Returned</th>
-                    <th>Available</th>
-                    <th>Details</th>
-                  </tr>
-                </thread>
-                <tbody>
-                  {cars.map(car => {
-                    const style = car.rented === true ? "table-danger" : "";
-                    return (
-                      <tr className={style}>
-                        <td>{car.id}</td>
-                        <td>{car.make}</td>
-                        <td>{car.model}</td>
-                        <td>{car.year}</td>
-                        <td>{car.seats}</td>
-                        <td>
-                          <NumberFormat
-                            value={car.price}
-                            displayType={"text"}
-                            thousandSeparator={true}
-                            prefix={"$"}
-                            decimalScale="2"
-                            fixedDecimalScale={true}
-                          />
-                        </td>
-                        <td>{m(car.start_date).format("MM/DD/YYYY")}</td>
-                        <td>{m(car.end_date).format("MM/DD/YYYY")}</td>
-                        <td>
-                          {car.rented === true ? (
-                            <button
-                              className="btn btn-danger btn-sm"
-                              onClick={() => {
-                                this.rentCar(car.id);
-                              }}
-                            >
-                              no
-                            </button>
-                          ) : (
-                            <button
-                              className="btn btn-primary btn-sm"
-                              onClick={() => {
-                                this.rentCar(car.id);
-                              }}
-                            >
-                              yes
-                            </button>
-                          )}
-                        </td>
-                        <td>
-                          <Link to={"/api/cars/" + car.id}>
-                            <button
-                              type="submit"
-                              class="btn btn-warning  btn-sm"
-                            >
-                              View Car
-                            </button>
-                          </Link>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <CarList
+            cars={this.state.cars}
+            rentCar={childState => this.rentCar(childState)}
+          />
         </div>
       </div>
     );
