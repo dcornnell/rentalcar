@@ -116,7 +116,6 @@ class Car extends Component {
             ""
           )}
         </div>
-
         <h2>Rental History</h2>
         <button
           className="btn align-right"
