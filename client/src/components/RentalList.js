@@ -1,5 +1,6 @@
 import React from "react";
 import m from "moment";
+import NumberFormat from "react-number-format";
 function RentalList({ rentals }) {
   console.log(rentals);
   return (
@@ -25,9 +26,38 @@ function RentalList({ rentals }) {
                     <td>{m(rental.end_date).format("MM/DD/YYYY")}</td>
                     <td>{rental.days}</td>
                     <td>{rental.miles}</td>
-                    <td>{rental.price}</td>
-                    <td>{rental.total_price}</td>
-                    <td>{rental.vat_price}</td>
+                    <td>
+                      <NumberFormat
+                        value={rental.price}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"$"}
+                        decimalScale="2"
+                        fixedDecimalScale={true}
+                      />
+                    </td>
+                    <td>
+                      {" "}
+                      <NumberFormat
+                        value={rental.total_price}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"$"}
+                        decimalScale="2"
+                        fixedDecimalScale={true}
+                      />
+                    </td>
+                    <td>
+                      {" "}
+                      <NumberFormat
+                        value={rental.vat_price}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"$"}
+                        decimalScale="2"
+                        fixedDecimalScale={true}
+                      />
+                    </td>
                   </tr>
                 );
               })
