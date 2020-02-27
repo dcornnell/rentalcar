@@ -1,6 +1,6 @@
 # Jiffy Car
 
-This is a React application using Bootstrap CSS framework on the front end and a MySQL database on the backend. It is currently deployed on Heroku [here](https://jiffycar.herokuapp.com/), please allow a few seconds for the page to load as Heroku dynos take awhile to start if the page hasnt been visited in awhile.
+This is a React application using Bootstrap CSS framework on the front end and a MySQL database on the backend. It is currently deployed on Heroku [here](https://jiffycar.herokuapp.com/), please allow a few seconds for the page to load as Heroku dynos take awhile to start if the page has not been visited in awhile.
 
 ## Deployed Site
 
