@@ -27,7 +27,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Install Node and packages
 
 1. install Node.js from <https://nodejs.org/en/>
-2. move in the project folder and run these command in the terminal
+2. move into the project folder and run these command in the terminal
 
 > install npm packages
 
