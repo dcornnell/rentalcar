@@ -9,7 +9,6 @@ This is a React application using Bootstrap CSS framework on the front end and a
 ## Table of Contents
 - [Questions](#questions)
 - [Getting Started](#getting-started)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Built With](#built-with)
 
