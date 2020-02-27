@@ -11,6 +11,7 @@ class Car extends Component {
     editCar: false,
     addRental: false
   };
+
   getInfo() {
     const id = this.props.match.params.id;
     axios.get("/api/cars/" + id).then(res => {
@@ -18,7 +19,7 @@ class Car extends Component {
       this.setState({ about: about });
     });
   }
-
+  //depending on the "property" open or close appropriate form
   toggle = property => {
     if (property === "editCar") {
       this.setState({ editCar: !this.state.editCar });
@@ -39,7 +40,6 @@ class Car extends Component {
     this.getInfo();
   }
   render() {
-    console.log(this.state.about.rented);
     return this.state.about ? (
       <div className="container">
         <div className="jumbotron py-2">

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import NumberFormat from "react-number-format";
 import m from "moment";
 import { Link } from "react-router-dom";
+
 class CarList extends Component {
   render() {
     return (
