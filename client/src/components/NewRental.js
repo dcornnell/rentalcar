@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import NumberFormat from "react-number-format";
 class NewRental extends Component {
   state = {
     CarId: this.props.carId,
@@ -149,20 +150,34 @@ class NewRental extends Component {
               <tr>
                 <td>{this.props.price}</td>
                 <td>
-                  {this.getPrices(
-                    this.state.start_date,
-                    this.state.end_date,
-                    this.state.price,
-                    "total"
-                  )}
+                  <NumberFormat
+                    value={this.getPrices(
+                      this.state.start_date,
+                      this.state.end_date,
+                      this.state.price,
+                      "total"
+                    )}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                    decimalScale="2"
+                    fixedDecimalScale={true}
+                  />
                 </td>
                 <td>
-                  {this.getPrices(
-                    this.state.start_date,
-                    this.state.end_date,
-                    this.state.price,
-                    "vat"
-                  )}
+                  <NumberFormat
+                    value={this.getPrices(
+                      this.state.start_date,
+                      this.state.end_date,
+                      this.state.price,
+                      "vat"
+                    )}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"$"}
+                    decimalScale="2"
+                    fixedDecimalScale={true}
+                  />
                 </td>
               </tr>
             </tbody>

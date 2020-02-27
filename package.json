@@ -1,5 +1,5 @@
 {
-  "name": "mysqlnodeexpress",
+  "name": "jiffycar",
   "version": "1.0.0",
   "description": "",
   "engines": {
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dcornnell/mysqlnodeexpress.git"
+    "url": "git+https://github.com/dcornnell/jiffycar.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dcornnell/mysqlnodeexpress/issues"
+    "url": "https://github.com/dcornnell/jiffycar/issues"
   },
-  "homepage": "https://github.com/dcornnell/mysqlnodeexpress#readme",
+  "homepage": "https://github.com/dcornnell/jiffycar#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "concurrently": "^5.1.0",
