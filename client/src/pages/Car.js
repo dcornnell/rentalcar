@@ -3,6 +3,7 @@ import axios from "axios";
 import EditCar from "../components/EditCar";
 import RentalList from "../components/RentalList";
 import NewRental from "../components/NewRental";
+import NumberFormat from "react-number-format";
 
 class Car extends Component {
   state = {
@@ -38,21 +39,38 @@ class Car extends Component {
     this.getInfo();
   }
   render() {
+    console.log(this.state.about.rented);
     return this.state.about ? (
       <div className="container">
-        <div className="jumbotron">
+        <div className="jumbotron py-2">
           <h1>
             {this.state.about.make} {this.state.about.model}{" "}
           </h1>
           <div className="row pty-1">
-            <div className="col">
+            <div className="col-md-12 col-lg-3">
               <h4>year: {this.state.about.year}</h4>
             </div>
-            <div className="col">
+            <div className="col-md-12 col-lg-3">
               <h4>seats: {this.state.about.seats}</h4>
             </div>
-            <div className="col">
-              <h4>price pre day: {this.state.about.price}</h4>
+            <div className="col-md-12 col-lg-3">
+              <h4>
+                price/day:
+                <NumberFormat
+                  value={this.state.about.price}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                  decimalScale="2"
+                  fixedDecimalScale={true}
+                />{" "}
+              </h4>
+            </div>
+            <div className="col-md-12 col-lg-3">
+              <h4>
+                status:{" "}
+                {this.state.about.rented === true ? "available" : "rented"}
+              </h4>
             </div>
           </div>
           <hr class="my-4" />
