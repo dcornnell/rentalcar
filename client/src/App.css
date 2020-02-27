@@ -18,3 +18,8 @@ body {
 .rented {
   color: red;
 }
+
+.validation {
+  color: red;
+  height: 20px;
+}
