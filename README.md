@@ -41,6 +41,9 @@ $ npm install
 $ npm start
 ```
 
+3. when the app is ready it will open in a browser, if you some reason it does not you can access it from:
+localhost:3000
+
 ## Usage
 
 Users can add view all cars for rent, add new cars to the fleet, view and edit car details from the car page as well as view and add rental history.
