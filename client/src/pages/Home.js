@@ -3,6 +3,7 @@ import NewCar from "../components/NewCar";
 import axios from "axios";
 import m from "moment";
 import { Link } from "react-router-dom";
+import NumberFormat from "react-number-format";
 
 class Home extends Component {
   state = { cars: [], form: false };
@@ -62,16 +63,16 @@ class Home extends Component {
               <table className="table">
                 <thread className="align">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Make</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Seats</th>
-                    <th scope="col">Price per day</th>
-                    <th scope="col">Day Rented</th>
-                    <th scope="col">Day Returned</th>
-                    <th scope="col">Rented</th>
-                    <th scope="col">Details</th>
+                    <th>#</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Seats</th>
+                    <th>Price per day</th>
+                    <th>Day Rented</th>
+                    <th>Day Returned</th>
+                    <th>Available</th>
+                    <th>Details</th>
                   </tr>
                 </thread>
                 <tbody>
@@ -79,12 +80,21 @@ class Home extends Component {
                     const style = car.rented === true ? "table-danger" : "";
                     return (
                       <tr className={style}>
-                        <th scope="row">{car.id}</th>
+                        <td>{car.id}</td>
                         <td>{car.make}</td>
                         <td>{car.model}</td>
                         <td>{car.year}</td>
                         <td>{car.seats}</td>
-                        <td>{car.price}</td>
+                        <td>
+                          <NumberFormat
+                            value={car.price}
+                            displayType={"text"}
+                            thousandSeparator={true}
+                            prefix={"$"}
+                            decimalScale="2"
+                            fixedDecimalScale={true}
+                          />
+                        </td>
                         <td>{m(car.start_date).format("MM/DD/YYYY")}</td>
                         <td>{m(car.end_date).format("MM/DD/YYYY")}</td>
                         <td>
@@ -95,7 +105,7 @@ class Home extends Component {
                                 this.rentCar(car.id);
                               }}
                             >
-                              yes
+                              no
                             </button>
                           ) : (
                             <button
@@ -104,7 +114,7 @@ class Home extends Component {
                                 this.rentCar(car.id);
                               }}
                             >
-                              no
+                              yes
                             </button>
                           )}
                         </td>
