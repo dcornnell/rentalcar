@@ -2,7 +2,6 @@ import React from "react";
 import m from "moment";
 import NumberFormat from "react-number-format";
 function RentalList({ rentals }) {
-  console.log(rentals);
   return (
     <div className="table-responsive">
       <table className="table">
