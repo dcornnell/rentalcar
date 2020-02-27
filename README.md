@@ -7,23 +7,39 @@ This is a React application using Bootstrap CSS framework on the front end and a
 [here](https://jiffycar.herokuapp.com/)
 
 ## Table of Contents
-
+- [Questions](#questions)
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Built With](#built-with)
 
+## Questions
+
+If there are any questions please contact me at daniel.cornnell@gmail.com
+
 ## Getting Started
 
-In order for this application to run on your local computer, you must have Node.js installed and a MySQL database server as well as the required node modules.
+In order for this application to run on your local computer, you must have Node.js installed as well as the required node modules.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
 
-Node.js, MySQL and the required packages are needed to run this application locally.
+### Install Node and packages
 
----
+1 install Node.js from <https://nodejs.org/en/>
+2 move in the project folder and run these command in the terminal
+
+> install npm packages
+
+```shell
+$ npm install
+```
+
+> run the app
+
+```shell
+$ npm start
+```
 
 ## Installation
 
@@ -61,48 +77,8 @@ Node.js, MySQL and the required packages are needed to run this application loca
 
 - You can verify that the installation was correct by going to Git Bash and typing “mysql –V”. The path followed by the version should show up.
 
-### MySQL Server Installation Guide (Mac)
 
-- Head to <https://dev.mysql.com/downloads/mysql>
 
-- Scroll down and find macOS 10.14 (x86, 64-bit), DMG Archive and click “Download”.
-
-- Click “No thanks, just start my download.”
-
-- Open the .DMG file and go through the installation process.
-
-- Click “Continue” to get to the Software License Agreement Screen.
-
-- Click “Continue” to agree with the Software License Agreement and click “Agree”.
-
-- Click “Install” and input your password to allow the installer to continue.
-
-- **IMPORTANT**: Make sure to select “Use Legacy Password Encryption” and click “Next”.
-
-- Create a root password. WARNING. Do not forget this password! After entering a password, make sure to check the box to "Start server on installation"
-
-- Click “Finish”.
-
-- You can verify that the installation was correct by going to “System Preferences” and the MySQL icon should show up at the bottom.
-
-- Click the MySQL Icon in "System Preferences". This will bring up a GUI in which you can Start or Stop your server. You can also set it to start server when you turn on your computer.
-
-### Install Node and packages
-
-- install Node.js from <https://nodejs.org/en/>
-- once in the project folder
-
-> install npm packages
-
-```shell
-$ npm install
-```
-
-> run the app
-
-```shell
-$ npm start
-```
 
 ## Usage
 
