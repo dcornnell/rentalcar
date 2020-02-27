@@ -1,10 +1,6 @@
 # Jiffy Car
 
-<<<<<<< HEAD
-### This is a React application using Bootstrap CSS framework on the front end and a MqSQL database on the backend. It is currently deployed on Heroku [here](https://jiffycar.herokuapp.com/), please allow a few seconds for the page to load as Heroku dynos take awhile to start if the page hasnt been visited in awhile.
-=======
-This is a React application using Bootstrap CSS framework on the front end and a MqSQL database on the backend. It is currently deployed on Heroku [here](https://jiffycar.herokuapp.com/), please allow a few seconds for the page to load as Heroku dynos take awhile to start if the page has not been visited in awhile.
->>>>>>> 4eeab40fa256fcdebc54ace58e80d01666db8708
+This is a React application using Bootstrap CSS framework on the front end and a MqSQL database on the backend. It is currently deployed on Heroku [here](https://jiffycar.herokuapp.com/), please allow a few seconds for the page to load as Heroku dynos take awhile to start if the page hasnt been visited in awhile.
 
 ## Deployed Site
 
