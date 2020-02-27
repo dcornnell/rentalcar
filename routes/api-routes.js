@@ -48,4 +48,14 @@ module.exports = function(app) {
       res.json(results);
     });
   });
+
+  app.delete("/api/cars/:id", function(req, res) {
+    db.Car.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
 };

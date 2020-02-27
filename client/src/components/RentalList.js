@@ -5,7 +5,7 @@ function RentalList({ rentals }) {
   return (
     <div className="table-responsive">
       <table className="table">
-        <thread className="align">
+        <thead>
           <tr>
             <th scope="col">Date Rented</th>
             <th scope="col">Date Returned</th>
@@ -15,7 +15,7 @@ function RentalList({ rentals }) {
             <th scope="col">Total Price</th>
             <th scope="col">Vat Price</th>
           </tr>
-        </thread>
+        </thead>
         <tbody>
           {rentals
             ? rentals.map(rental => {

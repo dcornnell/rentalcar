@@ -12,6 +12,13 @@ class Car extends Component {
     addRental: false
   };
 
+  deleteCar() {
+    axios({
+      method: "DELETE",
+      url: "/api/cars/" + this.state.about.id
+    }).then(setTimeout(this.props.history.push("/")), 2000);
+  }
+
   getInfo() {
     const id = this.props.match.params.id;
     axios.get("/api/cars/" + id).then(res => {
@@ -69,20 +76,35 @@ class Car extends Component {
             <div className="col-md-12 col-lg-3">
               <h4>
                 status:{" "}
-                {this.state.about.rented === true ? "available" : "rented"}
+                {this.state.about.rented === true ? (
+                  "available"
+                ) : (
+                  <b className="rented">rented</b>
+                )}
               </h4>
             </div>
           </div>
-          <hr class="my-4" />
-          <button
-            className="btn primary"
-            onClick={() => {
-              this.toggle("editCar");
-            }}
-          >
-            Edit Car
-          </button>
 
+          <hr className="my-4" />
+          <div class="btn-group" role="group" aria-label="buttons">
+            <button
+              className="btn btn-warning btn-sm"
+              onClick={() => {
+                this.toggle("editCar");
+              }}
+            >
+              Edit Car
+            </button>
+
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => {
+                this.deleteCar();
+              }}
+            >
+              Delete Car
+            </button>
+          </div>
           {this.state.editCar === true ? (
             <EditCar
               onSubmit={childState => {
@@ -105,8 +127,8 @@ class Car extends Component {
 
         {this.state.about.price !== undefined &&
         this.state.addRental === true ? (
-          <div class="card">
-            <div class="card-body">
+          <div className="card">
+            <div className="card-body">
               <NewRental
                 price={this.state.about.price}
                 carId={this.props.match.params.id}

@@ -17,15 +17,15 @@ class App extends Component {
           <nav className="navbar navbar-light bg-light fixed-top">
             <div className="container">
               <span className="navbar-brand mb-0 h1 title">JiffyCar</span>
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
                   <NavLink
                     exact={true}
                     className="navbar-item"
                     activeClassName="is-active"
                     to={"/"}
                   >
-                    Home <span class="sr-only">(current)</span>
+                    Home <span className="sr-only">(current)</span>
                   </NavLink>
                 </li>
               </ul>
